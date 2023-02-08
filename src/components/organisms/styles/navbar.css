@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.flex__container {
+  display: flex;
+  gap: 1rem;
+}
