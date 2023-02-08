@@ -1,11 +1,14 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Main from "./components/Xpages/main";
+import "./global.css";
 
 function App() {
   return (
-    <div className="App">
-      <h1>TESTE</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </Router>
   );
 }
 
