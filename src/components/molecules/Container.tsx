@@ -7,19 +7,25 @@ interface ITypoProps {
   children?: Array<JSX.Element> | JSX.Element;
 }
 
+const ContainerDiv = styled.div<ITypoProps>`
+  justify-content: ${(props) => props.center && "center"}
+  align-items: ${(props) => props.center && "center"};
+  gap: ${(props) => props.gap};
+`;
+
 /**
  * Image tag element
- * @param {boolean} center Optional parameter that renders a centered div
- * @param {string} gap CSS property Gap between itens
+ * @param {ITypoProps} props ignore this param, only center and gap are valid
+ * @param {boolean} center center the container
+ * @param {string} gap gap between children
  * @return {JSX.Element} img element
  */
-function Container({ center = false, gap, children }: ITypoProps): JSX.Element {
-  const Container = styled.div`
-    justify-content: ${center && "center"};
-    align-items: ${center && "center"};
-    gap: ${gap};
-  `;
-  return <Container className={"flex__container"}>{children}</Container>;
+function Container(props: ITypoProps): JSX.Element {
+  return (
+    <ContainerDiv {...props} className={"flex__container"}>
+      {props.children}
+    </ContainerDiv>
+  );
 }
 
 export default Container;
