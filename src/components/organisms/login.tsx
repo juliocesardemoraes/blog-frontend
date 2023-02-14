@@ -5,11 +5,10 @@ function Login(): JSX.Element {
   const [password, setPassword] = useState("");
 
   const login = async () => {
-    let host = "blog-backend-seven-sigma.vercel.app";
-    host = "localhost:3000";
-    const url = `http://${host}/auth/login`;
+    const hostUrl =
+      import.meta.env.VITE_HOST_LOCAL || process.env.VITE_HOST_LOCAL;
+    const url = `http://${hostUrl}/auth/login`;
     const body = { username: username, password: password };
-    console.log(body);
     const isLoggedIn = await fetch(url, {
       method: "POST",
       headers: {
@@ -20,12 +19,6 @@ function Login(): JSX.Element {
       body: JSON.stringify(body),
     });
     const result = await isLoggedIn.json();
-    console.log(result);
-    // const city = await fetch(`${websiteName}${cityQuery}${apiKey}${metric}`, {
-    //   mode: "cors",
-    // });
-    // const cityResult = await city.json();
-    // return cityResult;
   };
   return (
     <div>
